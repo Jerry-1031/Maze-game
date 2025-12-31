@@ -21,13 +21,11 @@ private:
     GameManager() : cur_state(GameState::MAIN_MENU), selected_level(0), state_switch(false), cur_world(std::make_shared<GameWorld>(this)), level_info{1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     {
         cur_world->InitWorld();
-        bgm = LoadMusicStream("../../assets/sound/bgm.mp3"); // new
+        bgm = LoadMusicStream("./assets/sound/bgm.mp3"); // new
         SetMusicPitch(bgm, 0.9f);
         PlayMusicStream(bgm);       // new
         SetMusicVolume(bgm, 0.25f); // new
         ReadSaveFile();
-        for(int i = 0; i <= 9; i++) std::cout << level_info[i] << " ";
-        std::cout << std::endl;
     }
 
 public:

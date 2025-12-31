@@ -157,7 +157,24 @@ void Water::Update()
             {
                 next_waters[i] = std::make_shared<Water>(target_row, target_col, is_lava, curr_dir, level + 1, ReverseDir(curr_dir), gameworld);
                 gameworld->Add(next_waters[i], LayerID::DECOR);
+
+                
             }
+
+            //detect wooden box:
+            if(is_lava && (level + 1) <= max_level && !next_waters[i]){
+                auto box_list = gameworld->GetObjectList(LayerID::OTHER);
+                for(auto obj : box_list){
+                    if(obj->isPushable()){
+                        auto box = std::static_pointer_cast<Box>(obj);
+                        if(box->Getcol() == target_col && box->Getrow() == target_row && (!box->isStone())){
+                            box->Break();
+                            break;
+                        }
+                    }
+                }
+            }
+            
 
             if (HasDifferWaterAt(gameworld, target_row, target_col, is_lava))
             { // water + lava = stone

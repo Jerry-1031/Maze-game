@@ -28,6 +28,7 @@ public:
     int Getrow() const { return row; }
     int Getcol() const { return col; }
     void Push(Direction new_dir, int new_speed);
+    void Break();
     bool isStone() const { return is_stone; }
 };
 

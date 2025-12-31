@@ -64,8 +64,8 @@ void GameWorld::InitWorld()
                 int grid_x = left_margin + x * GRID_WIDTH;
                 int grid_y = up_margin + y * GRID_WIDTH;
                 std::string path = (maze_data[y][x] == static_cast<int>(Tile::WALL))
-                                       ? "../../assets/wall.png"
-                                       : "../../assets/grass.png";
+                                       ? "./assets/wall.png"
+                                       : "./assets/grass.png";
                 auto grid = std::make_shared<Grid>(grid_x, grid_y, path);
                 Add(grid, LayerID::MAP);
             }

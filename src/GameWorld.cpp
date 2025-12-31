@@ -42,7 +42,8 @@ void GameWorld::UpdateWorld()
         {
             game_manager->Set_level_info(game_manager->Get_selected_level() - 1, 2);
             if(game_manager->Get_selected_level() != 10){
-                game_manager->Set_level_info(game_manager->Get_selected_level(), 1);
+                if(game_manager->Get_level_info(game_manager->Get_selected_level()) == 0)
+                    game_manager->Set_level_info(game_manager->Get_selected_level(), 1);
                 auto next_level_button = std::make_shared<NextLevelButton>(game_manager, game_manager->Get_selected_level() + 1);
                 Add(next_level_button, LayerID::UI);
             }

@@ -87,7 +87,6 @@ void GameManager::ReadSaveFile() {
         }
 
         if (level >= 1 && level <= 10 && (state == 0 || state == 1 || state == 2)) {
-            std::cout << level << "has write" << state << std::endl;
             level_info[level - 1] = state;
         }
     }

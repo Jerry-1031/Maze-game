@@ -64,6 +64,11 @@ void NextLevelButton::Update()
     movetick--;
     if (movetick == 0)
         movetick = 60;
+
+    if (IsKeyReleased(KEY_ENTER))
+    {
+        game_manager->SwitchGameState(switch_to_state, switch_to_level);
+    }
 }
 
 void RestartButton::Update()

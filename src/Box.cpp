@@ -41,6 +41,14 @@ void Box::Update()
     }
 }
 
+void Box::Break(){
+    SetSoundVolume(GetSound2(), 0.4f);
+    SetSoundPitch(GetSound2(), 2.0f);
+    PlaySound(GetSound2()); 
+    deathtick = 15;
+    gameworld->SetMazeData(row, col, 0);
+}
+
 void Box::Push(Direction new_dir, int new_speed)
 {
     SetSoundVolume(GetSound1(), 0.2f);
@@ -78,10 +86,7 @@ void Box::Push(Direction new_dir, int new_speed)
                 auto water = std::static_pointer_cast<Water>(obj);
                 if (water->GetCol() == col && water->GetRow() == row && water->is_Lava())
                 {
-                    SetSoundVolume(GetSound2(), 0.4f);
-                    SetSoundPitch(GetSound2(), 2.0f);
-                    PlaySound(GetSound2()); 
-                    deathtick = 15;
+                    Break();
                 }
             }
         }
