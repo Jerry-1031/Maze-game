@@ -15,7 +15,7 @@ void Button::Update()
 {
     cur_is_touched = is_touched();
 
-    if (is_clicked())
+    if (is_clicked() && (!is_locked))
     {
         game_manager->SwitchGameState(switch_to_state, switch_to_level);
     }
@@ -41,6 +41,15 @@ LevelSelectButton::LevelSelectButton(int x, int y, int level, GameManager *game_
     int text_x = level == 1 ? (x + 60) : (level == 10 ? (x + 40) : (x + 52));
     button_text = std::make_shared<GameText>(std::to_string(level), text_x, y + 25, 70, WHITE);
     gameworld->AddText(button_text);
+
+    if(game_manager->Get_level_info(level - 1) == 0){
+        ChangeTexture("./assets/locked_button.png");
+        is_locked = true;
+    }
+    else if(game_manager->Get_level_info(level - 1) == 1)
+        ChangeTexture("./assets/button.png");
+    else if(game_manager->Get_level_info(level - 1) == 2)
+        ChangeTexture("./assets/pass_button.png");
 }
 
 void NextLevelButton::Update()

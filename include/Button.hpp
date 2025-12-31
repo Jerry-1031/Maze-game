@@ -14,13 +14,14 @@ protected:
     int switch_to_level;
     bool pre_is_touched;
     bool cur_is_touched;
+    bool is_locked;
 
     bool is_clicked();
     bool is_touched();
 
 public:
     Button(GameState state, int level, int x, int y, int size_x, int size_y, std::string path, GameManager *game_manager)
-        : GameObject(x, y, 1, size_x, size_y, path, "./assets/sound/UI.mp3"), game_manager(game_manager), switch_to_state(state), switch_to_level(level), pre_is_touched(false), cur_is_touched(false) {}
+        : GameObject(x, y, 1, size_x, size_y, path, "./assets/sound/UI.mp3"), game_manager(game_manager), switch_to_state(state), switch_to_level(level), pre_is_touched(false), cur_is_touched(false), is_locked(false) {}
 
     virtual void Update() override;
 };
@@ -79,17 +80,6 @@ public:
         : Button(GameState::GAME_PLAY, switch_to_level, 925, 850, 150, 150, "./assets/nextlevel.png", game_manager), movetick(60) {}
 
     void Update() override;
-};
-
-class EasterEggLevelButton : public Button
-{
-private:
-    int level;
-    GameWorld *gameworld;
-    std::shared_ptr<GameText> button_text;
-
-public:
-    EasterEggLevelButton(int x, int y, int level, std::string display_text, GameManager *game_manager, GameWorld *gameworld);
 };
 
 #endif

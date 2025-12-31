@@ -1,0 +1,13 @@
+Saves of the maze game:
+(0 for locked, 1 for unlocked but unpassed, 2 for passed)
+
+level-1: 1
+level-2: 0
+level-3: 0
+level-4: 0
+level-5: 0
+level-6: 0
+level-7: 0
+level-8: 0
+level-9: 0
+level-10: 0

@@ -13,7 +13,7 @@
 
 void GameWorld::InitWorld()
 {
-    // Create background
+    //create background
     auto background = std::make_shared<Background>();
     Add(background, LayerID::BG);
 
@@ -36,6 +36,7 @@ void GameWorld::InitWorld()
 
     else if (game_manager->Get_cur_state() == GameState::GAME_PLAY)
     {
+
         auto return_button = std::make_shared<ReturnButton>(game_manager, this);
         Add(return_button, LayerID::UI);
         auto restart_button = std::make_shared<RestartButton>(game_manager, game_manager->Get_selected_level(), this);
@@ -131,7 +132,7 @@ void GameWorld::InitWorld()
             Add(pistonhead2, LayerID::OTHER);
             Add(piston2, LayerID::OTHER);
             Add(pressbutton2, LayerID::OTHER);
-
+            
             auto pistonhead3 = std::make_shared<Pistonhead>(8, 12, Direction::UP, this);
             auto piston3 = std::make_shared<Piston>(8, 12, "green", Direction::UP, this);
             auto pressbutton3 = std::make_shared<PressButton>(3, 16, "green", this, pistonhead3);
@@ -140,6 +141,8 @@ void GameWorld::InitWorld()
             Add(piston3, LayerID::OTHER);
             Add(pressbutton3, LayerID::OTHER);
             Add(pressbutton4, LayerID::OTHER);
+
+
 
             break;
         }
@@ -159,7 +162,7 @@ void GameWorld::InitWorld()
             Add(std::make_shared<Box>(2, 12, false, this), LayerID::OTHER);
             Add(std::make_shared<Box>(2, 16, true, this), LayerID::OTHER);
             Add(std::make_shared<Box>(12, 13, true, this), LayerID::OTHER);
-
+            
             auto pistonhead = std::make_shared<Pistonhead>(13, 13, Direction::UP, this);
             auto piston = std::make_shared<Piston>(13, 13, "red", Direction::UP, this);
             auto pressbutton1 = std::make_shared<PressButton>(5, 10, "red", this, pistonhead);
@@ -174,6 +177,7 @@ void GameWorld::InitWorld()
             Add(pressbutton3, LayerID::OTHER);
             Add(pressbutton4, LayerID::OTHER);
             Add(pressbutton5, LayerID::OTHER);
+
 
             break;
         }
@@ -217,7 +221,7 @@ void GameWorld::InitWorld()
             Add(std::make_shared<Enemy>(11, 3, this), LayerID::ENEMY);
             Add(std::make_shared<Enemy>(7, 3, this), LayerID::ENEMY);
             Add(std::make_shared<Enemy>(7, 15, this), LayerID::ENEMY);
-
+            
             break;
         }
         case 6:
@@ -413,7 +417,7 @@ void GameWorld::InitWorld()
             Add(pistonhead1, LayerID::OTHER);
             Add(piston1, LayerID::OTHER);
             Add(pressbutton1, LayerID::OTHER);
-
+            
             auto pistonhead2 = std::make_shared<Pistonhead>(5, 10, Direction::DOWN, this);
             auto piston2 = std::make_shared<Piston>(5, 10, "green", Direction::DOWN, this);
             auto pressbutton2 = std::make_shared<PressButton>(1, 9, "green", this, pistonhead2);
@@ -429,6 +433,7 @@ void GameWorld::InitWorld()
             Add(pressbutton3, LayerID::OTHER);
 
             Add(std::make_shared<Enemy>(1, 11, this), LayerID::ENEMY);
+
             break;
         }
 
@@ -446,6 +451,8 @@ void GameWorld::InitWorld()
             Add(std::make_shared<Box>(9, 12, false, this), LayerID::OTHER);
             Add(std::make_shared<Box>(1, 16, true, this), LayerID::OTHER);
 
+            //Add(std::make_shared<WaterSource>(1, 11, false, this), LayerID::DECOR);
+            //Add(std::make_shared<WaterSource>(13, 11, false, this), LayerID::DECOR);
             Add(std::make_shared<WaterSource>(6, 18, true, this), LayerID::DECOR);
             Add(std::make_shared<WaterSource>(9, 18, true, this), LayerID::DECOR);
 
@@ -517,109 +524,7 @@ void GameWorld::InitWorld()
             Add(std::make_shared<Enemy>(13, 1, this), LayerID::ENEMY);
             Add(std::make_shared<Enemy>(13, 3, this), LayerID::ENEMY);
             Add(std::make_shared<Enemy>(4, 18, this), LayerID::ENEMY);
-            break;
-        }
 
-        case 11:
-        {
-            Add(std::make_shared<Player>(1, 1, this), LayerID::PLAYER);
-
-            chest_row = 13;
-            chest_col = 18;
-            Add(std::make_shared<Chest>(chest_row, chest_col, this), LayerID::AFTERGAME);
-
-            Add(std::make_shared<WaterSource>(1, 18, false, this), LayerID::DECOR);
-            Add(std::make_shared<WaterSource>(11, 9, false, this), LayerID::DECOR);
-
-            Add(std::make_shared<WaterSource>(4, 13, true, this), LayerID::DECOR);
-            Add(std::make_shared<WaterSource>(10, 12, true, this), LayerID::DECOR);
-
-            auto pistonhead_red = std::make_shared<Pistonhead>(4, 2, Direction::DOWN, this);
-            auto piston_red = std::make_shared<Piston>(4, 2, "red", Direction::DOWN, this);
-            auto pistonhead_red2 = std::make_shared<Pistonhead>(4, 12, Direction::RIGHT, this);
-            auto piston_red2 = std::make_shared<Piston>(4, 12, "red", Direction::RIGHT, this);
-            auto button_red = std::make_shared<PressButton>(3, 2, "red", this, pistonhead_red, pistonhead_red2);
-            Add(pistonhead_red, LayerID::OTHER);
-            Add(piston_red, LayerID::OTHER);
-            Add(pistonhead_red2, LayerID::OTHER);
-            Add(piston_red2, LayerID::OTHER);
-            Add(button_red, LayerID::OTHER);
-
-            auto pistonhead_blue = std::make_shared<Pistonhead>(5, 5, Direction::UP, this);
-            auto piston_blue = std::make_shared<Piston>(5, 5, "blue", Direction::UP, this);
-            auto button_blue = std::make_shared<PressButton>(7, 4, "blue", this, pistonhead_blue);
-            Add(pistonhead_blue, LayerID::OTHER);
-            Add(piston_blue, LayerID::OTHER);
-            Add(button_blue, LayerID::OTHER);
-            Add(std::make_shared<Box>(7, 4, false, this), LayerID::OTHER);
-
-            auto pistonhead_green = std::make_shared<Pistonhead>(7, 7, Direction::DOWN, this);
-            auto piston_green = std::make_shared<Piston>(7, 7, "green", Direction::DOWN, this);
-            auto button_green = std::make_shared<PressButton>(9, 6, "green", this, pistonhead_green);
-            Add(pistonhead_green, LayerID::OTHER);
-            Add(piston_green, LayerID::OTHER);
-            Add(button_green, LayerID::OTHER);
-            Add(std::make_shared<Box>(9, 6, false, this), LayerID::OTHER);
-
-            auto pistonhead_yellow1 = std::make_shared<Pistonhead>(11, 13, Direction::UP, this);
-            auto piston_yellow1 = std::make_shared<Piston>(11, 13, "yellow", Direction::UP, this);
-            auto pistonhead_yellow2 = std::make_shared<Pistonhead>(12, 16, Direction::DOWN, this);
-            auto piston_yellow2 = std::make_shared<Piston>(12, 16, "yellow", Direction::DOWN, this);
-            auto button_yellow = std::make_shared<PressButton>(12, 14, "yellow", this, pistonhead_yellow1, pistonhead_yellow2);
-            Add(pistonhead_yellow1, LayerID::OTHER);
-            Add(piston_yellow1, LayerID::OTHER);
-            Add(pistonhead_yellow2, LayerID::OTHER);
-            Add(piston_yellow2, LayerID::OTHER);
-            Add(button_yellow, LayerID::OTHER);
-            Add(std::make_shared<Box>(12, 14, false, this), LayerID::OTHER);
-            break;
-        }
-
-        case 12:
-        {
-            Add(std::make_shared<Player>(8, 1, this), LayerID::PLAYER);
-
-            chest_row = 1;
-            chest_col = 16;
-            Add(std::make_shared<Chest>(chest_row, chest_col, this), LayerID::AFTERGAME);
-
-            Add(std::make_shared<Box>(8, 3, false, this), LayerID::OTHER);
-
-            Add(std::make_shared<WaterSource>(3, 4, false, this), LayerID::DECOR);
-            Add(std::make_shared<WaterSource>(3, 9, false, this), LayerID::DECOR);
-            Add(std::make_shared<WaterSource>(3, 14, false, this), LayerID::DECOR);
-
-            Add(std::make_shared<WaterSource>(11, 4, true, this), LayerID::DECOR);
-            Add(std::make_shared<WaterSource>(11, 9, true, this), LayerID::DECOR);
-            Add(std::make_shared<WaterSource>(11, 14, true, this), LayerID::DECOR);
-
-            auto pistonhead1 = std::make_shared<Pistonhead>(10, 8, Direction::RIGHT, this);
-            auto piston1 = std::make_shared<Piston>(10, 8, "red", Direction::RIGHT, this);
-            auto pistonhead11 = std::make_shared<Pistonhead>(10, 8, Direction::DOWN, this);
-            auto piston11 = std::make_shared<Piston>(10, 8, "red", Direction::DOWN, this);
-            auto pressbutton1 = std::make_shared<PressButton>(6, 7, "red", this, pistonhead1, pistonhead11);
-
-            Add(pistonhead1, LayerID::OTHER);
-            Add(piston1, LayerID::OTHER);
-            Add(pistonhead11, LayerID::OTHER);
-            Add(piston11, LayerID::OTHER);
-            Add(pressbutton1, LayerID::OTHER);
-
-            auto pistonhead2 = std::make_shared<Pistonhead>(10, 13, Direction::RIGHT, this);
-            auto piston2 = std::make_shared<Piston>(10, 13, "blue", Direction::RIGHT, this);
-            auto pressbutton2 = std::make_shared<PressButton>(12, 12, "blue", this, pistonhead2);
-            auto pressbutton22 = std::make_shared<PressButton>(13, 12, "blue", this, pistonhead2);
-            Add(pistonhead2, LayerID::OTHER);
-            Add(piston2, LayerID::OTHER);
-            Add(pressbutton2, LayerID::OTHER);
-            Add(pressbutton22, LayerID::OTHER);
-
-            auto pistonhead3 = std::make_shared<Pistonhead>(11, 10, Direction::LEFT, this);
-            auto piston3 = std::make_shared<Piston>(11, 10, "green", Direction::LEFT, this);
-            auto pressbutton3 = std::make_shared<PressButton>(12, 7, "green", this, pistonhead3);
-            Add(pistonhead3, LayerID::OTHER);
-            Add(piston3, LayerID::OTHER);
-            Add(pressbutton3, LayerID::OTHER);
             break;
         }
 
